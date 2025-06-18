@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riza Farika Deviyanti</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+      #valentineQuestion {
+        font-weight: bold;
+        font-family: 'Comic Sans MS', cursive;
+        font-size: 40px;
+        margin-bottom: 20px;
+        white-space: pre-line;
+      }
+      #buttonsContainer{
+        display: none;
+        margin-top: 20px;
+        text-align: center;
+      }
+      #catGif {
+        display: none; 
+        margin: 20px auto 0 auto;  
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="valentineQuestion"></div>
+
+    <div id="buttonsContainer">
+      <!-- <button class="answerButton" id="yesButton">Yes</button> -->
+      <!-- <button class="answerButton" id="noButton">I don't want (╥﹏╥)o</button> -->
+    </div>
+    <br />
+    <!-- <img id="catGif" src="assets/gif/cat.gif" alt="cat asking question" class="responsive" /> -->
+
+    <script>
+      const messages = [
+        "Dear, Riza Farika Deviyanti",
+        "I still love you till this day, 19 June 2025",
+        "Text me if u feel the same or u want to try again"
+      ];
+
+      const typingSpeed = 50;
+      let messageIndex = 0;
+      let charIndex = 0;
+      const target = document.getElementById("valentineQuestion");
+
+      const buttonsContainer = document.getElementById("buttonsContainer");
+      const catGif = document.getElementById("catGif");
+
+      function typeWriter() {
+        if (messageIndex < messages.length) {
+          if (charIndex < messages[messageIndex].length) {
+            target.innerHTML += messages[messageIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, typingSpeed);
+          } else {
+            target.innerHTML += "\n";
+            messageIndex++;
+            charIndex = 0;
+            setTimeout(typeWriter, 0);
+          }
+        } else {
+          buttonsContainer.style.display = "block";
+          catGif.style.display = "block";
+        }
+      }
+
+      typeWriter();
+
+      const noButton = document.getElementById("noButton");
+      const yesButton = document.getElementById("yesButton");
+
+      const noMessages = [
+        "Please say yes (｡•́︿•̀｡)",
+        "Don't break my heart (ಥ﹏ಥ)",
+        "Are you sure...? (´•̥̥̥︵•̥̥̥`)",
+        "Pretty please? 🥺",
+        "I'll buy you boba... 🧋",
+        "Still no?? 😭",
+        "Pleaseee babeee🥺🥺🥺🥺🥺",
+      ];
+
+      let noClickCount = 0;
+
+      noButton.addEventListener("click", function () {
+        const currentFontSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = currentFontSize + 10 + "px";
+
+        if (noClickCount < noMessages.length) {
+          noButton.textContent = noMessages[noClickCount];
+          noClickCount++;
+        } else {
+          noButton.textContent = "I give up... 😭";
+        }
+      });
+
+      yesButton.addEventListener("click", () => {
+        confetti({
+          particleCount: 200,
+          spread: 100,
+          origin: { y: 0.6 },
+        });
+
+        setTimeout(() => {
+          confetti({
+            particleCount: 150,
+            spread: 100,
+            origin: { y: 0.4 },
+          });
+        }, 300);
+
+        setTimeout(() => {
+          window.location.href = "thankyou.html";
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
