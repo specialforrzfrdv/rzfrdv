@@ -38,9 +38,18 @@
     <!-- <img id="catGif" src="assets/gif/cat.gif" alt="cat asking question" class="responsive" /> -->
 
     <script>
+      const date = new Date();
+      date.setDate(date.getDate() - 7);
+
+      const formattedDate = date.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+
       const messages = [
         "Dear, Riza Farika Deviyanti",
-        "I still love you till this day, 19 June 2025",
+        `I still love you till this day, ${formattedDate}`,
         "Text me if u feel the same or u want to try again"
       ];
 
