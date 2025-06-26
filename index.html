@@ -39,7 +39,7 @@
 
     <script>
       const date = new Date();
-      date.setDate(date.getDate() - 7);
+      date.setDate(date.getDate());
 
       const formattedDate = date.toLocaleDateString("en-GB", {
         day: "numeric",
@@ -49,18 +49,21 @@
 
       const messages = [
         "Dear, Riza Farika Deviyanti",
-        `I still love you till this day, ${formattedDate}`,
-        "Text me if u feel the same or u want to try again"
+        `I still love you till this day za`,
+        "",
+        "Aku udah belajar dari masalah yang udah kita lewatin sebelumnya za, aku tau dari masalah kita sebelumnya yang kamu butuhin sebenarnya cuma space dan aku yang ga terlalu attached ke kamu, aku mau kita perbaikin hubungan kita lagi za, semoga kamu buka ini lagi ya :)",
+        "kalo emang kamu mau perbaikin hubungan kita lagi, kamu bisa chat aku lewat WA atau lewat mana aja :) hopefully u see this",
+        "",
+        `last update: ${formattedDate}`,
       ];
 
-      const typingSpeed = 50;
+      const typingSpeed = 0;
       let messageIndex = 0;
       let charIndex = 0;
       const target = document.getElementById("valentineQuestion");
 
       const buttonsContainer = document.getElementById("buttonsContainer");
       const catGif = document.getElementById("catGif");
-
       function typeWriter() {
         if (messageIndex < messages.length) {
           if (charIndex < messages[messageIndex].length) {
